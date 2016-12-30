@@ -1,0 +1,16 @@
+{
+  "name": "3rd",
+  "version": "0.0.1",
+  "description": "Walk-through of https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "vue": "^2.1.8",
+    "vue-resource": "^1.0.3"
+  },
+  "devDependecies": {},
+  "author": "Me",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10"
+  }
+}
