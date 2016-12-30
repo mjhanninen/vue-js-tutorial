@@ -13,16 +13,10 @@ export var app = new Vue({
         events: []
     },
     created: function() {
-        console.log("app created fired");
-        this.fetchEvents();
-    },
-    ready: function() {
-        console.log("app ready fired");
         this.fetchEvents();
     },
     methods: {
         fetchEvents: function() {
-            console.log("fetchEvents fired");
             var events = [
                 {
                     id: 1,
@@ -37,11 +31,12 @@ export var app = new Vue({
                     date: "2015-10-02"
                 }
             ];
+
             for (var e of events) {
                 this.events.push(e);
             }
         },
-        addEvents: function() {
+        addEvent: function() {
             if (this.event.name) {
                 this.events.push(this.event);
                 this.event = {
@@ -50,6 +45,9 @@ export var app = new Vue({
                     console: ""
                 }
             }
+        },
+        deleteEvent: function(ix) {
+            this.events.splice(ix, 1);
         }
     }
 });
