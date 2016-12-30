@@ -1,7 +1,8 @@
 module.exports = {
     entry: "./src/app.js",
     output: {
-        path: "./dist",
+        library: "lib3rd",
+        path: "./dist/",
         publicPath: "dist/",
         filename: "3rd.js"
     },
@@ -9,10 +10,18 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 loader: "babel",
-                exclude: /node_modules/
+                query: {
+                    presets: ["es2015", "stage-0"]
+                }
             }
         ]
+    },
+    vue: {
+        loaders: {
+            js: "babel-loader"
+        }
     },
     resolve: {
         alias: {
