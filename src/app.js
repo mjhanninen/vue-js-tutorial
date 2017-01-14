@@ -1,4 +1,10 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
+
+Vue.use(VueResource);
+
+const API_URL = "/api";
+const API_EVENTS_URL = API_URL + "/events";
 
 export var app = new Vue({
 
@@ -20,24 +26,18 @@ export var app = new Vue({
     methods: {
 
         fetchEvents: function() {
-            var events = [
-                {
-                    id: 1,
-                    name: "TIFF",
-                    description: "Toronto International Film Festival",
-                    date: "2015-09-10"
-                },
-                {
-                    id: 2,
-                    name: "The Martian Premiere",
-                    description: "The Martian comes to theaters",
-                    date: "2015-10-02"
-                }
-            ];
-
-            for (var e of events) {
-                this.events.push(e);
-            }
+            console.log("Requesting data");
+            this.$http
+                .get(API_EVENTS_URL)
+                .then((data) => {
+                    console.log(data);
+                    for (var event of data.body) {
+                        console.log("Pushing an event");
+                        this.events.push(event);
+                    }
+                }, (err) => {
+                    console.log(err)
+                });
         },
 
         addEvent: function() {
