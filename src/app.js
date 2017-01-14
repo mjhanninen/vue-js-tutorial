@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
-console.log("Hitting app.js");
-
 export var app = new Vue({
+
     el: "#events",
+
     data: {
         event: {
             name: "",
@@ -12,10 +12,13 @@ export var app = new Vue({
         },
         events: []
     },
+
     created: function() {
         this.fetchEvents();
     },
+
     methods: {
+
         fetchEvents: function() {
             var events = [
                 {
@@ -36,6 +39,7 @@ export var app = new Vue({
                 this.events.push(e);
             }
         },
+
         addEvent: function() {
             if (this.event.name) {
                 this.events.push(this.event);
@@ -46,10 +50,9 @@ export var app = new Vue({
                 }
             }
         },
+
         deleteEvent: function(ix) {
             this.events.splice(ix, 1);
         }
     }
 });
-
-console.log("Finished app.js");

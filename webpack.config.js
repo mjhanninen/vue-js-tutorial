@@ -2,8 +2,8 @@ module.exports = {
     entry: "./src/app.js",
     output: {
         library: "lib3rd",
-        path: "./dist/",
-        publicPath: "dist/",
+        path: "./dist/assets/",
+        publicPath: "assets/",
         filename: "3rd.js"
     },
     module: {
@@ -11,9 +11,12 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel",
+                loader: "babel-loader",
                 query: {
-                    presets: ["es2015", "stage-0"]
+                    presets: [
+                        "es2015",
+                        "stage-0"
+                    ]
                 }
             }
         ]
