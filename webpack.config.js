@@ -30,5 +30,18 @@ module.exports = {
         alias: {
             "vue$": "vue/dist/vue.common.js"
         }
+    },
+    devServer: {
+        contentBase: ".",
+        proxy: {
+            "/api": {
+                target: "http://127.0.0.1:8081/",
+                secure: false,
+                pathRewrite: {
+                    "^/api": ""
+                },
+                changeOrigin: true
+            }
+        }
     }
 }
