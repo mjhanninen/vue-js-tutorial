@@ -38,7 +38,11 @@
                      placeholder="Date"
                      v-model="event.date">
             </div>
-            <button class="btn btn-primary" v-on:click="addEvent">Submit</button>
+            <button class="btn btn-primary" v-on:click="submitNewEvent">Submit</button>
+            <div v-if="!newEventState.isOkay">
+              <h4>Error</h4>
+              <p>{{ newEventState.message }}</p>
+            </div>
           </div>
         </div>
       </div>
