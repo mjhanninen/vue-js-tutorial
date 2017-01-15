@@ -58,25 +58,40 @@ export var app = new Vue({
             this.newEventState.message = message;
         },
 
+        failWithResponse: function(response) {
+            console.log(response);
+            if (response.status == 400) {
+                this.fail(response.body.message);
+            }
+            else {
+                this.fail("The server responded with status code " + response.status +
+                          ". Please resubmit your event again in couple minutes.");
+            }
+        },
+
         submitNewEvent: function() {
             if (this.event.name) {
-                var newEvent = this.event;
+                var event = {
+                    name: this.event.name
+                };
+                if (this.event.description) {
+                    event.description = this.event.description
+                }
+                if (this.event.date) {
+                    event.date = this.event.date
+                }
                 this.$http
-                    .post(API_EVENTS_URL, newEvent)
+                    .post(API_EVENTS_URL, event)
                     .then((response) => {
                         console.log(response);
                         this.event = {
                             name: "",
                             description: "",
-                            console: ""
+                            date: ""
                         };
                         this.newEventState.isOkay = true;
                         return response.json();
-                    }, (response) => {
-                        console.log(response);
-                        this.fail("The server responded with status code " + response.status +
-                                  ". Please resubmit your event again in couple minutes.");
-                    })
+                    }, this.failWithResponse)
                     .then(this.addEvent);
             }
             else {
