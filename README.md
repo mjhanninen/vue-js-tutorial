@@ -1,9 +1,12 @@
 # Vue.js tutorial
 
-This is an "etude" I wrote to study and understand the basics of Vue.js.  It
-follows heavily [this tutorial] on Scotch.io.
+This is an "etude" I wrote to study and understand the basics of [Vue.js][1].
+It follows heavily [this tutorial][2] on Scotch.io.
 
-[1]: https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs
+[1]: https://vuejs.org
+    "Vue.js -- The Progressive JavaScript Framework"
+
+[2]: https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs
     "Build an App with Vue.js: A Lightweight Alternative to AngularJS"
 
 ## Front-end
@@ -21,7 +24,7 @@ And then head to [http://localhost:8080/](http::localhost:8080/).
 There is a very simple back-end written in Rust for testing purposes.  You can
 boot it up as follows:
 
-```.rs
+```.sh
 $ cd backend/
 $ cargo run
 ```
